@@ -7,9 +7,9 @@ const GlobalStyle = createGlobalStyle`
   background-color: transparent;
   color: white;
   
-  text-align: center;
+  /* text-align: center;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   }
   body {
     background-color: #333;

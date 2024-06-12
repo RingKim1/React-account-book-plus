@@ -4,11 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { isClick } from "../redux/slices/activeIndexSlice";
 
-const Section = styled.section`
-  background-color: rgba(25, 100, 200, 0.4);
-  border-radius: 5px;
-`;
-
 const SelectMonth = () => {
   const activeIndex = useSelector((state) => state.activeIndex);
   const dispatch = useDispatch();
@@ -37,3 +32,10 @@ const SelectMonth = () => {
 };
 
 export default SelectMonth;
+
+const Section = styled.section`
+  background-color: rgba(25, 100, 200, 0.4);
+  border-radius: 5px;
+
+  text-align: center;
+`;

@@ -3,14 +3,6 @@ import DetailItem from "./DetailItem";
 import NoItem from "./NoItem";
 import { useSelector } from "react-redux";
 
-const Ul = styled.ul`
-  background-color: rgba(25, 100, 200, 0.4);
-  border-radius: 5px;
-
-  display: flex;
-  flex-direction: column;
-`;
-
 const DetailList = () => {
   const expenses = useSelector((state) => state.expenses);
   const activeIndex = useSelector((state) => state.activeIndex);
@@ -30,3 +22,13 @@ const DetailList = () => {
 };
 
 export default DetailList;
+
+const Ul = styled.ul`
+  background-color: rgba(25, 100, 200, 0.4);
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+`;

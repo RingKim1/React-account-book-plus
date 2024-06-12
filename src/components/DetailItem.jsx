@@ -1,6 +1,24 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+const DetailItem = ({ expense }) => {
+  return (
+    <Li>
+      <Link to={`/detail/${expense.id}`}>
+        <DivDate>{expense.date}</DivDate>
+        <DivContent>
+          <P>
+            <Span>{expense.category}</Span> - {expense.content}
+          </P>
+          <P2>{expense.amount + `원`}</P2>
+        </DivContent>
+      </Link>
+    </Li>
+  );
+};
+
+export default DetailItem;
+
 const Li = styled.li`
   background-color: rgba(25, 100, 200, 0.4);
   border: 1px solid gray;
@@ -47,21 +65,3 @@ const Span = styled.span`
   color: orange;
   font-weight: 800;
 `;
-
-const DetailItem = ({ expense }) => {
-  return (
-    <Li>
-      <Link to={`/detail/${expense.id}`}>
-        <DivDate>{expense.date}</DivDate>
-        <DivContent>
-          <P>
-            <Span>{expense.category}</Span> - {expense.content}
-          </P>
-          <P2>{expense.amount + `원`}</P2>
-        </DivContent>
-      </Link>
-    </Li>
-  );
-};
-
-export default DetailItem;

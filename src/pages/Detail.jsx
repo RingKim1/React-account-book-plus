@@ -5,56 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { modifyItem, removeItem } from "../redux/slices/expensesSlice";
 import Swal from "sweetalert2";
 
-const Ul = styled.ul`
-  background-color: rgba(25, 100, 200, 0.4);
-  border-radius: 5px;
-
-  display: flex;
-  flex-direction: column;
-
-  padding-top: 20px;
-`;
-
-const Li = styled.li`
-  background-color: transparent;
-  text-align: start;
-
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-`;
-
-const Input = styled.input`
-  background-color: white;
-  text-align: start;
-  color: black;
-  width: 500px;
-  height: 30px;
-
-  margin: 10px 0;
-  padding: 5px;
-`;
-
-const Input2 = styled.input`
-  background-color: white;
-  text-align: start;
-  color: black;
-  width: 500px;
-  height: 100px;
-
-  margin: 10px 0;
-  padding: 5px;
-`;
-
-const ButtonWrapper = styled.div`
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-
-  width: 90%;
-  justify-content: space-around;
-`;
-
 const Detail = () => {
   const expenses = useSelector((state) => state.expenses);
   const dispatch = useDispatch();
@@ -141,3 +91,57 @@ const Detail = () => {
 };
 
 export default Detail;
+
+const Ul = styled.ul`
+  background-color: rgba(25, 100, 200, 0.4);
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 20px;
+`;
+
+const Li = styled.li`
+  background-color: transparent;
+  text-align: start;
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+`;
+
+const Input = styled.input`
+  background-color: white;
+  text-align: start;
+  color: black;
+  width: 500px;
+  height: 30px;
+
+  margin: 10px 0;
+  padding: 5px;
+`;
+
+const Input2 = styled.input`
+  background-color: white;
+  text-align: start;
+  color: black;
+  width: 500px;
+  height: 100px;
+
+  margin: 10px 0;
+  padding: 5px;
+`;
+
+const ButtonWrapper = styled.div`
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+
+  width: 90%;
+  justify-content: space-around;
+`;

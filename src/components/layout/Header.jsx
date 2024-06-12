@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+const Header = () => {
+  return (
+    <StHeader>
+      <H1>account book</H1>
+    </StHeader>
+  );
+};
+
+export default Header;
+
 const StHeader = styled.header`
   padding: 1rem;
   display: flex;
@@ -18,13 +28,3 @@ const H1 = styled.h1`
 
   margin: 0px 20px;
 `;
-
-const Header = () => {
-  return (
-    <StHeader>
-      <H1>account book</H1>
-    </StHeader>
-  );
-};
-
-export default Header;
