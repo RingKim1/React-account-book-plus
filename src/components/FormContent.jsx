@@ -1,20 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
-const Div = styled.div`
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-`;
-
-const Input = styled.input`
-  background-color: #333;
-
-  border-radius: 5px;
-  margin: 10px;
-`;
-
 const FormContent = ({ FormContent, value, setValue, type }) => {
   // 포커스
   // const focusRef = useRef(null);
@@ -40,3 +26,17 @@ const FormContent = ({ FormContent, value, setValue, type }) => {
 };
 
 export default FormContent;
+
+const Div = styled.div`
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+`;
+
+const Input = styled.input`
+  background-color: #333;
+
+  border-radius: 5px;
+  margin: 10px;
+`;

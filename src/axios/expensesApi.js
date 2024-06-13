@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const authApi = axios.create({
-  baseURL: "https://moneyfulpublicpolicy.co.kr/",
+const expensesApi = axios.create({
+  baseURL: "http://localhost:5000/expenses",
 });
 
-authApi.interceptors.request.use(
+expensesApi.interceptors.request.use(
   function (config) {
     console.log("인터셉트 요청 성공!");
     return config;
@@ -15,9 +15,10 @@ authApi.interceptors.request.use(
   }
 );
 
-authApi.interceptors.response.use(
+expensesApi.interceptors.response.use(
   function (response) {
     console.log("인터셉트 응답 받았어요!");
+    // 회원정보 확인 api 요청
     return response;
   },
   function (error) {
@@ -26,4 +27,4 @@ authApi.interceptors.response.use(
   }
 );
 
-export default authApi;
+export default expensesApi;

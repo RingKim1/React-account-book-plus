@@ -3,9 +3,11 @@ import Navbar from "../Navbar";
 import User from "../User";
 import { useState } from "react";
 import { BsList } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -15,7 +17,7 @@ const Header = () => {
     <StHeader>
       <NavBtn onClick={toggleNav} />
       <Navbar isNavOpen={isNavOpen} toggleNav={toggleNav} />
-      <H1>account book</H1>
+      <H1 onClick={() => navigate("/")}>account book</H1>
       <User />
     </StHeader>
   );
@@ -53,4 +55,6 @@ const H1 = styled.h1`
   font-weight: 600;
 
   margin: 0px 20px;
+
+  cursor: pointer;
 `;

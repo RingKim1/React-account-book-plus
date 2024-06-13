@@ -4,54 +4,72 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyItem, removeItem } from "../redux/slices/expensesSlice";
 import Swal from "sweetalert2";
+import expensesApi from "../axios/expensesApi";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 const Detail = () => {
-  const expenses = useSelector((state) => state.expenses);
-  const dispatch = useDispatch();
+  // const expenses = useSelector((state) => state.expenses);
+  // const dispatch = useDispatch();
 
+  const navigate = useNavigate();
   const params = useParams();
 
-  const item = expenses.find((el) => String(el.id) === params.id);
-  const navigate = useNavigate();
+  const user = JSON.parse(sessionStorage.getItem("user"));
 
   const dateRef = useRef();
   const categoryRef = useRef();
   const amountRef = useRef();
   const contentRef = useRef();
 
-  console.log(dateRef);
-  const removeItemBtn = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(removeItem(id));
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
-        navigate("/");
-      }
-    });
+  const fetchExpenses = async () => {
+    const response = await expensesApi.get();
+    return response.data;
   };
 
-  const modifyItemBtn = () => {
-    const payload = {
-      id: params.id,
-      dateRef: dateRef.current.value,
-      categoryRef: categoryRef.current.value,
-      amountRef: amountRef.current.value,
-      contentRef: contentRef.current.value,
-    };
-    dispatch(modifyItem(payload));
+  const {
+    data: expenses,
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: ["expenses"],
+    queryFn: fetchExpenses,
+  });
+
+  const item = expenses.find((el) => String(el.id) === params.id);
+
+  console.log(item.createdUserId);
+
+  const removeItemBtn = async (id) => {
+    if (user.userId !== item.createdUserId) {
+      return alert("해당 지출에 대한 수정 및 삭제 권한이 없습니다.");
+    }
+    await expensesApi.delete(`/${id}`);
+    navigate("/");
   };
+
+  const modifyItemBtn = async () => {
+    if (user.userId !== item.createdUserId) {
+      return alert("해당 지출에 대한 수정 및 삭제 권한이 없습니다.");
+    }
+    await expensesApi.put(`/${params.id}`, {
+      id: params.id,
+      date: dateRef.current.value,
+      category: categoryRef.current.value,
+      amount: amountRef.current.value,
+      content: contentRef.current.value,
+      createdBy: user.nickname,
+      createdUserId: user.userId,
+    });
+    navigate("/");
+  };
+
+  const { mutate } = useMutation({
+    mutationFn: removeItemBtn,
+    modifyItemBtn,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["expenses"]);
+    },
+  });
 
   return (
     <>

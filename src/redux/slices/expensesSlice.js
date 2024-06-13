@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import fakeData from "../../assets/fakeData";
-import Swal from "sweetalert2";
 
 const initialState = fakeData;
 

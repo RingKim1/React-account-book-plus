@@ -5,7 +5,10 @@ const DetailItem = ({ expense }) => {
   return (
     <Li>
       <Link to={`/detail/${expense.id}`}>
-        <DivDate>{expense.date}</DivDate>
+        <DivDate>
+          {expense.date}
+          <Span2> ({expense.createdBy})</Span2>
+        </DivDate>
         <DivContent>
           <P>
             <Span>{expense.category}</Span> - {expense.content}
@@ -63,5 +66,11 @@ const P2 = styled.p`
 const Span = styled.span`
   background-color: transparent;
   color: orange;
+  font-weight: 800;
+`;
+
+const Span2 = styled.span`
+  background-color: transparent;
+  color: lightgreen;
   font-weight: 800;
 `;

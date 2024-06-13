@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import styled from "styled-components";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const User = () => {
-  const { logout } = useAuth();
+  const { logout, nickname } = useAuth();
   const user = JSON.parse(sessionStorage.getItem("user"));
   const navigate = useNavigate();
 
@@ -19,7 +18,12 @@ const User = () => {
 
   return user ? (
     <Div>
-      {user.avatar ? <Img src={user.avatar} /> : <Profile />}
+      {user.nickname}
+      {user.avatar ? (
+        <Img src={user.avatar} onClick={() => navigate("/profile")} />
+      ) : (
+        <Profile onClick={() => navigate("/profile")} />
+      )}
       <Button onClick={handleLogout}>로그아웃</Button>
     </Div>
   ) : (

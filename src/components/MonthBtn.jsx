@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+const MonthBtn = ({ Month, active, onClick }) => {
+  return (
+    <Button $active={active} onClick={onClick}>
+      {Month}월
+    </Button>
+  );
+};
+
+export default MonthBtn;
+
 const Button = styled.button`
   height: 50px;
   width: 120px;
@@ -15,13 +25,3 @@ const Button = styled.button`
 
   cursor: pointer;
 `;
-
-const MonthBtn = ({ Month, active, onClick }) => {
-  return (
-    <Button $active={active} onClick={onClick}>
-      {Month}월
-    </Button>
-  );
-};
-
-export default MonthBtn;
