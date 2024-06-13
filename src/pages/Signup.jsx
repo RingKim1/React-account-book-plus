@@ -20,7 +20,6 @@ const Signup = () => {
     } else {
       alert("Signup failed");
     }
-    console.log(data);
   };
 
   return (
@@ -49,7 +48,9 @@ const Signup = () => {
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
         />
-        <Button1 onClick={() => navigate("/login")}>로그인</Button1>
+        <Button1 type="button" onClick={() => navigate("/login")}>
+          로그인
+        </Button1>
         <Button2 type="submit">회원가입</Button2>
       </Form>
     </>

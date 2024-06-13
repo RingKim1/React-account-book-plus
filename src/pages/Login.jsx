@@ -14,13 +14,12 @@ const Login = () => {
       password,
     });
     if (data.success) {
-      console.log("동작?");
-      login(data.accessToken);
+      alert("로그인 되었습니다.");
+      login(data);
       navigate("/");
     } else {
-      alert("login faild");
+      alert("로그인에 실패하였습니다.");
     }
-    // console.log(data);
   };
   return (
     <>
@@ -42,7 +41,9 @@ const Login = () => {
           type="password"
         />
         <Button1 type="submit">로그인</Button1>
-        <Button2 onClick={() => navigate("/signup")}>회원가입</Button2>
+        <Button2 type="button" onClick={() => navigate("/signup")}>
+          회원가입
+        </Button2>
       </Form>
     </>
   );

@@ -1,9 +1,22 @@
 import styled from "styled-components";
+import Navbar from "../Navbar";
+import User from "../User";
+import { useState } from "react";
+import { BsList } from "react-icons/bs";
 
 const Header = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   return (
     <StHeader>
+      <NavBtn onClick={toggleNav} />
+      <Navbar isNavOpen={isNavOpen} toggleNav={toggleNav} />
       <H1>account book</H1>
+      <User />
     </StHeader>
   );
 };
@@ -15,11 +28,24 @@ const StHeader = styled.header`
   display: flex;
   border-bottom: 1px solid gray;
 
+  justify-content: space-between;
+  align-items: center;
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
     padding: 1rem 0.5rem;
   }
+`;
+
+const NavBtn = styled(BsList)`
+  width: 35px;
+  height: 35px;
+
+  font-weight: 800;
+  color: white;
+
+  cursor: pointer;
 `;
 
 const H1 = styled.h1`

@@ -12,13 +12,18 @@ const StForm = styled.form`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   padding: 10px;
 `;
 
 const Button = styled.button`
+  border: none;
+  border-radius: 5px;
+
+  height: 30px;
+  background-color: gray;
   cursor: pointer;
 `;
-
 const Form = () => {
   // 상태 관리
   const [date, setDate] = useState(new Date());
