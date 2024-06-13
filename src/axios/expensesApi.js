@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const expensesApi = axios.create({
-  baseURL: "http://localhost:5000/expenses",
+  baseURL: "https://strong-helix-honeycup.glitch.me/expenses",
 });
 
 expensesApi.interceptors.request.use(
